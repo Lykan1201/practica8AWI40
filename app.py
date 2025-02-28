@@ -54,7 +54,7 @@ def ingredientes():
     sql    = """
     SELECT idIngrediente,
            nombreIngrediente,
-           Existencias
+           existencias
 
     FROM ingredientes
 
