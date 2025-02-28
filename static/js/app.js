@@ -19,30 +19,23 @@ app.config(function ($routeProvider, $locationProvider) {
         templateUrl: "/app",
         controller: "appCtrl"
     })
-    .when("/productos", {
-        templateUrl: "/productos",
-        controller: "productosCtrl"
+    .when("/ingredientes", {
+        templateUrl: "/ingredientes",
+        controller: "ingredientesCtrl"
     })
-    .when("/alumnos", {
-        templateUrl: "/alumnos",
-        controller: "alumnosCtrl"
+    .when("/postres", {
+        templateUrl: "/postres",
+        controller: "postresCtrl"
     })
-    .when("/ventas", {
-        templateUrl: "/ventas",
-        controller: "ventasCtrl"
-    })
-    .when("/reportes", {
-        templateUrl: "/reportes",
-        controller: "reportesCtrl"
-    })
-    .when("/notificaciones", {
-        templateUrl: "/notificaciones",
-        controller: "notificacionesCtrl"
+    .when("/postresingredientes", {
+        templateUrl: "/postresingredientes",
+        controller: "postresingredientesCtrl"
     })
     .otherwise({
         redirectTo: "/"
     })
 })
+
 app.run(["$rootScope", "$location", "$timeout", function($rootScope, $location, $timeout) {
     function actualizarFechaHora() {
         lxFechaHora = DateTime
@@ -84,14 +77,12 @@ app.run(["$rootScope", "$location", "$timeout", function($rootScope, $location, 
 
 // Hay que modificarlo para los controladores
 app.controller("appCtrl", function ($scope, $http) {
-    // alert("Hola, soy el controlador app")
 })
-app.controller("productosCtrl", function ($scope, $http) {
-    // alert("Hola, soy el controlador productos")
+app.controller("ingredientesCtrl", function ($scope, $http) {
 })
-app.controller("alumnosCtrl", function ($scope, $http) {
+app.controller("postresCtrl", function ($scope, $http) {
 })
-app.controller("ventasCtrl", function ($scope, $http) {
+app.controller("postresingredientesCtrl", function ($scope, $http) {
 })
 app.controller("reportesCtrl", function ($scope, $http) {
 })
