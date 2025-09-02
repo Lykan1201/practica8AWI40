@@ -87,6 +87,18 @@ app.controller("productosCtrl", function ($scope, $http) {
     $(document).on("click", ".btn-ingredientes", function (event) {
         const id = $(this).data("id");
         console.log("Ver ingredientes de ID:", id);
+
+        $.get(`/productos/ingredientes/${id}`, function (html) {
+            modal(html, "Ingredientes", [
+                {
+                    html: "Aceptar",
+                    class: "btn btn-secondary",
+                    fun: function (event) {
+                        closeModal();
+                    }
+                }
+            ]);
+        });
     });
 
     $(document).on("submit", "#frmProducto", function (event) {
@@ -105,15 +117,6 @@ app.controller("productosCtrl", function ($scope, $http) {
 
 });
 
-        $.get(`/productos/ingredientes/${id}`, function (html) {
-            modal(html, "Ingredientes", [
-                {html: "Aceptar", class: "btn btn-secondary", fun: function (event) {
-                    closeModal()
-                }}
-            ])
-        })
-    })
-})
 app.controller("alumnosCtrl", function ($scope, $http) {
 })
 app.controller("ventasCtrl", function ($scope, $http) {
@@ -140,4 +143,5 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
 
