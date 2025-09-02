@@ -83,8 +83,27 @@ app.run(["$rootScope", "$location", "$timeout", function($rootScope, $location, 
 app.controller("appCtrl", function ($scope, $http) {
 })
 app.controller("productosCtrl", function ($scope, $http) {
+
     $(document).on("click", ".btn-ingredientes", function (event) {
-        const id = $(this).data("id")
+        const id = $(this).data("id");
+        console.log("Ver ingredientes de ID:", id);
+    });
+
+    $(document).on("submit", "#frmProducto", function (event) {
+        event.preventDefault();
+
+        $.post("/producto", {
+            id: "",
+            nombre: $("#txtNombre").val(),
+            precio: $("#txtPrecio").val(),
+            existencias: $("#txtExistencias").val()
+        }, function (respuesta) {
+            console.log("Producto guardado:", respuesta);
+            $("#frmProducto")[0].reset();
+        });
+    });
+
+});
 
         $.get(`/productos/ingredientes/${id}`, function (html) {
             modal(html, "Ingredientes", [
@@ -121,3 +140,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
     activeMenuOption(location.hash)
 })
+
